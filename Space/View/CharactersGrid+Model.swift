@@ -1,18 +1,27 @@
 import Foundation
 
-extension CharactersGrid {
+extension MarvelGrid {
     @MainActor
     class Model: ObservableObject {
+        let endPoint: Marvel.EndPoint
+
         var offset = 0
         var total = 0
         @Published var characters: [Character] = []
         var isLoading = false
 
-        lazy var marvelClient = MarvelClient()
+
+
+        init(endPoint: Marvel.EndPoint, offset: Int = 0, total: Int = 0) {
+            self.endPoint = endPoint
+            self.offset = offset
+            self.total = total
+        }
 
         func fetch(_ offset: Int = 0) async throws {
+            let marvelClient = MarvelClient()
             isLoading = true
-            guard let response = try? await marvelClient.charactersFetch(offset) else {
+            guard let response = try? await marvelClient.charactersFetch(endPoint: endPoint, offset) else {
                 return
             }
             isLoading = false

@@ -5,15 +5,19 @@ struct Marvel {
     var endPoint: EndPoint
 
     enum EndPoint {
-        case characters(characterId: String)
-        //        case comics = "characters/{characterId}/comics""
-        //        case series
+        case characters
+        case comics(characterId: String)
+        case events(characterId: String)
     }
 
     var path: String {
         switch endPoint {
-        case let .characters(characterId: characterId):
-            return characterId.isEmpty ? "characters" : "characters/\(characterId)"
+        case .characters:
+            return "characters"
+        case let .comics(characterId: characterId):
+            return  "characters/\(characterId)/comics"
+        case let .events(characterId: characterId):
+            return  "characters/\(characterId)/events"
         }
     }
 

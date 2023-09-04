@@ -3,7 +3,8 @@ import SwiftUI
 struct AppView: View {
     var body: some View {
         NavigationStack {
-            CharactersGrid()
+            MarvelGrid(
+                model: MarvelGrid.Model(endPoint: .characters))
         }
     }
 }

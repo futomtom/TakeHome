@@ -4,8 +4,8 @@ struct Character: Decodable, Identifiable, Equatable {
     let id: Int?
     let name, description: String?
     let thumbnail: Thumbnail?
-    let comics: Comics
-    let series: Series
+    let comics: SubInfo?
+    let events: SubInfo?
 
     var imageURL: URL {
         guard let thumbnail = thumbnail else {
@@ -38,12 +38,9 @@ extension Character {
         }
     }
 
-    struct Comics: Codable {
+    struct SubInfo: Codable {
         let returned: Int
-    }
-
-    struct Series: Codable {
-        let returned: Int
+        let collectionURI: String?
     }
 }
 
@@ -66,8 +63,8 @@ extension Character {
                 name: "Captain America",
                 description: description,
                 thumbnail: thumbnail,
-                comics: Comics(returned: 12),
-                series: Series(returned: 22)
+                comics: SubInfo(returned: 12, collectionURI: "http://mock"),
+                events: SubInfo(returned: 22, collectionURI: "http://mock")
             )
         }
     }

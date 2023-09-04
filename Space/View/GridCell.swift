@@ -3,6 +3,12 @@ import SwiftUI
 struct GridCell: View {
     @Environment(\.colorScheme) var colorScheme
     let character: Character
+    let showTitle: Bool
+
+    init(character: Character, titleShown: Bool = true) {
+        self.character = character
+        self.showTitle = titleShown
+    }
 
     var body: some View {
         ZStack {
@@ -22,8 +28,9 @@ struct GridCell: View {
                     }
                 }
             }
-
-            bannerView()
+            if showTitle {
+                bannerView()
+            }
         }
     }
 
