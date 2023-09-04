@@ -6,7 +6,7 @@ import SwiftUI
 struct SpaceApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AppView()
         }
     }
 }
