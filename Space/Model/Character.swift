@@ -7,6 +7,10 @@ struct Character: Decodable, Identifiable, Equatable, Hashable {
     let comics: SubInfo?
     let events: SubInfo?
 
+    var Id: String {
+        "\(id)"
+    }
+
     var imageURL: URL {
         guard let thumbnail = thumbnail else {
             return Character.noImageURL

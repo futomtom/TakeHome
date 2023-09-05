@@ -35,6 +35,7 @@ extension MarvelClient {
             let result: T = try decoder.decode(T.self, from: data)
             return result
         } catch {
+            print("🙂", error)
             throw error
         }
     }

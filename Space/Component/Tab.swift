@@ -16,27 +16,24 @@ struct Tab: View {
     @Namespace private var animation
 
     var body: some View {
-        HStack(spacing: 30) {
+        HStack(spacing: 10) {
             ForEach(TabMode.allCases, id: \.self) { tab in
                 VStack {
                     tabIcon(tab: tab, mode: mode)
                     Text(character.getTitle(for: tab))
-                        .padding(.horizontal, 12)
-                        .padding(.vertical, 5)
+                        .font(.system(size: 12, weight: .bold))
+                        .padding(.top, 5)
                 }
-                .padding()
+                .padding(.vertical, 15)
+                .padding(.horizontal, 30)
                 .background {
                     if mode == tab {
-                        Rectangle()
-                            .fill(.blue)
+                        RoundedRectangle(cornerRadius: 5)
+                            .fill(.gray.opacity(0.3))
                             .matchedGeometryEffect(id: "ACTIVETAB", in: animation)
-                    } else {
-                        Rectangle()
-                            .fill(.gray.opacity(0.1))
                     }
                 }
-                .foregroundColor(mode == tab ? .white : .secondary)
-
+                .foregroundColor(mode == tab ? .primary : .secondary)
                 .onTapGesture {
                     mode = tab
                 }
@@ -44,7 +41,7 @@ struct Tab: View {
         }
     }
 
-    func tabIcon(tab: TabMode, mode: TabMode) -> some View {
+    private func tabIcon(tab: TabMode, mode: TabMode) -> some View {
         var iconName = ""
         if tab == .comics {
             iconName = tab == mode ? "book.fill" : "book"

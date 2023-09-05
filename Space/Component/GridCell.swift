@@ -2,8 +2,8 @@ import SwiftUI
 
 struct GridCell: View {
     @Environment(\.colorScheme) var colorScheme
-    let character: Character
-    let titleShown: Bool
+    private let character: Character
+    private let titleShown: Bool
 
     init(character: Character, titleShown: Bool = true) {
         self.character = character
@@ -12,7 +12,7 @@ struct GridCell: View {
 
     var body: some View {
         ZStack {
-            CacheAsyncImage(url: character.imageURL) { phase in
+            CachedAsyncImage(url: character.imageURL) { phase in
                 switch phase {
                 case let .success(image):
                     image
@@ -34,7 +34,7 @@ struct GridCell: View {
         }
     }
 
-    func bannerView() -> some View {
+    private func bannerView() -> some View {
         ZStack(alignment: .bottom) {
             Rectangle()
                 .fill(

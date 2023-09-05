@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct CacheAsyncImage<Content>: View where Content: View {
+struct CachedAsyncImage<Content>: View where Content: View {
     private let url: URL
     private let content: (AsyncImagePhase) -> Content
 
@@ -36,7 +36,7 @@ struct CacheAsyncImage_Previews: PreviewProvider {
     static var previews: some View {
         let character = Character.mock.first!
 
-        CacheAsyncImage(
+        CachedAsyncImage(
             url: character.imageURL
         ) { phase in
             switch phase {

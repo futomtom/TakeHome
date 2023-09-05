@@ -2,12 +2,13 @@ import Foundation
 
 struct Marvel {
     private let credential: Marvel.Credentials = Marvel.getCredentials()
-    var endPoint: EndPoint
+    var endPoint: EndPoint = .dummy
 
     enum EndPoint {
+        case dummy
         case characters
-        case comics(characterId: String)
-        case events(characterId: String)
+        case comics(String)
+        case events(String)
     }
 
     var path: String {
@@ -18,6 +19,8 @@ struct Marvel {
             return "characters/\(characterId)/comics"
         case let .events(characterId: characterId):
             return "characters/\(characterId)/events"
+        case .dummy:
+            return ""
         }
     }
 

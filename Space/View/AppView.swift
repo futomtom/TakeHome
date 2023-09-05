@@ -5,18 +5,19 @@ struct AppView: View {
 
     var body: some View {
         NavigationStack(path: $routes) {
-            MarvelGrid(
-                model: MarvelGrid.Model(endPoint: .characters)
-            )
-            .environment(\.navigate) { route in
-                routes.append(route)
-            }
-            .navigationDestination(for: Route.self) { route in
-                switch route {
-                case let .detail(character):
-                    Detail(character: character)
+            MarvelGrid(endPoint: .characters)
+                .toolbar(content: {
+                    Text("")
+                })
+                .environment(\.navigate) { route in
+                    routes.append(route)
                 }
-            }
+                .navigationDestination(for: Route.self) { route in
+                    switch route {
+                    case let .detail(character):
+                        Detail(character: character)
+                    }
+                }
         }
     }
 }

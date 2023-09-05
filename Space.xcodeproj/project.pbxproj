@@ -11,6 +11,9 @@
 		8203A5B12AA6AA57004FAC43 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8203A5B02AA6AA57004FAC43 /* Tab.swift */; };
 		8203A5B42AA6CF9C004FAC43 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8203A5B32AA6CF9C004FAC43 /* Route.swift */; };
 		8203A5B62AA6D64D004FAC43 /* Character+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8203A5B52AA6D64D004FAC43 /* Character+Ext.swift */; };
+		8203A5B92AA6E7F2004FAC43 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8203A5B82AA6E7F2004FAC43 /* Header.swift */; };
+		8203A5BB2AA6E89A004FAC43 /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8203A5BA2AA6E89A004FAC43 /* Panel.swift */; };
+		8203A5BD2AA6F646004FAC43 /* NoDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8203A5BC2AA6F646004FAC43 /* NoDataView.swift */; };
 		823A5D932AA28A6000D5DE07 /* SpaceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A5D922AA28A6000D5DE07 /* SpaceApp.swift */; };
 		823A5D952AA28A6000D5DE07 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A5D942AA28A6000D5DE07 /* AppView.swift */; };
 		823A5D972AA28A6100D5DE07 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 823A5D962AA28A6100D5DE07 /* Assets.xcassets */; };
@@ -28,8 +31,8 @@
 		82C2DF0C2AA5D292003390D3 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C2DF082AA5D292003390D3 /* Constant.swift */; };
 		82C2DF0F2AA5D66E003390D3 /* MarvelGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C2DF0E2AA5D66E003390D3 /* MarvelGrid.swift */; };
 		82C2DF112AA5D677003390D3 /* GridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C2DF102AA5D677003390D3 /* GridCell.swift */; };
-		82C2DF132AA5E536003390D3 /* MarvelGrid+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C2DF122AA5E536003390D3 /* MarvelGrid+Model.swift */; };
-		82C2DF152AA5ED98003390D3 /* CacheAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C2DF142AA5ED98003390D3 /* CacheAsyncImage.swift */; };
+		82C2DF132AA5E536003390D3 /* GridModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C2DF122AA5E536003390D3 /* GridModel.swift */; };
+		82C2DF152AA5ED98003390D3 /* CachedAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C2DF142AA5ED98003390D3 /* CachedAsyncImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +57,9 @@
 		8203A5B02AA6AA57004FAC43 /* Tab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 		8203A5B32AA6CF9C004FAC43 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		8203A5B52AA6D64D004FAC43 /* Character+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character+Ext.swift"; sourceTree = "<group>"; };
+		8203A5B82AA6E7F2004FAC43 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
+		8203A5BA2AA6E89A004FAC43 /* Panel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Panel.swift; sourceTree = "<group>"; };
+		8203A5BC2AA6F646004FAC43 /* NoDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDataView.swift; sourceTree = "<group>"; };
 		823A5D8F2AA28A6000D5DE07 /* Space.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Space.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		823A5D922AA28A6000D5DE07 /* SpaceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceApp.swift; sourceTree = "<group>"; };
 		823A5D942AA28A6000D5DE07 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
@@ -74,8 +80,8 @@
 		82C2DF082AA5D292003390D3 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		82C2DF0E2AA5D66E003390D3 /* MarvelGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarvelGrid.swift; sourceTree = "<group>"; };
 		82C2DF102AA5D677003390D3 /* GridCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridCell.swift; sourceTree = "<group>"; };
-		82C2DF122AA5E536003390D3 /* MarvelGrid+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MarvelGrid+Model.swift"; sourceTree = "<group>"; };
-		82C2DF142AA5ED98003390D3 /* CacheAsyncImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheAsyncImage.swift; sourceTree = "<group>"; };
+		82C2DF122AA5E536003390D3 /* GridModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridModel.swift; sourceTree = "<group>"; };
+		82C2DF142AA5ED98003390D3 /* CachedAsyncImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachedAsyncImage.swift; sourceTree = "<group>"; };
 		82C2DF162AA5EF36003390D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -118,8 +124,10 @@
 				8203A5B02AA6AA57004FAC43 /* Tab.swift */,
 				82C2DF102AA5D677003390D3 /* GridCell.swift */,
 				82C2DF0E2AA5D66E003390D3 /* MarvelGrid.swift */,
-				82C2DF142AA5ED98003390D3 /* CacheAsyncImage.swift */,
-				82C2DF122AA5E536003390D3 /* MarvelGrid+Model.swift */,
+				8203A5BC2AA6F646004FAC43 /* NoDataView.swift */,
+				82C2DF142AA5ED98003390D3 /* CachedAsyncImage.swift */,
+				8203A5B82AA6E7F2004FAC43 /* Header.swift */,
+				8203A5BA2AA6E89A004FAC43 /* Panel.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -197,6 +205,7 @@
 		82C2DEFD2AA5D1F5003390D3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				82C2DF122AA5E536003390D3 /* GridModel.swift */,
 				82C2DEFE2AA5D206003390D3 /* Character.swift */,
 				8203A5B52AA6D64D004FAC43 /* Character+Ext.swift */,
 				82C2DF002AA5D206003390D3 /* PaginatedInfo.swift */,
@@ -356,22 +365,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8203A5B92AA6E7F2004FAC43 /* Header.swift in Sources */,
 				8203A5AF2AA6A937004FAC43 /* Detail.swift in Sources */,
+				8203A5BD2AA6F646004FAC43 /* NoDataView.swift in Sources */,
 				8203A5B12AA6AA57004FAC43 /* Tab.swift in Sources */,
 				82C2DF032AA5D206003390D3 /* PaginatedInfo.swift in Sources */,
 				8203A5B62AA6D64D004FAC43 /* Character+Ext.swift in Sources */,
 				82C2DF0F2AA5D66E003390D3 /* MarvelGrid.swift in Sources */,
 				82C2DEFB2AA5D1D3003390D3 /* Marvel.swift in Sources */,
 				823A5D952AA28A6000D5DE07 /* AppView.swift in Sources */,
+				8203A5BB2AA6E89A004FAC43 /* Panel.swift in Sources */,
 				82C2DF0A2AA5D292003390D3 /* String+MD5.swift in Sources */,
 				82C2DF012AA5D206003390D3 /* Character.swift in Sources */,
 				823A5D932AA28A6000D5DE07 /* SpaceApp.swift in Sources */,
 				8203A5B42AA6CF9C004FAC43 /* Route.swift in Sources */,
 				82C2DF112AA5D677003390D3 /* GridCell.swift in Sources */,
 				82C2DF022AA5D206003390D3 /* Response.swift in Sources */,
-				82C2DF132AA5E536003390D3 /* MarvelGrid+Model.swift in Sources */,
+				82C2DF132AA5E536003390D3 /* GridModel.swift in Sources */,
 				82C2DEFC2AA5D1D3003390D3 /* MarvelClient.swift in Sources */,
-				82C2DF152AA5ED98003390D3 /* CacheAsyncImage.swift in Sources */,
+				82C2DF152AA5ED98003390D3 /* CachedAsyncImage.swift in Sources */,
 				82C2DF0C2AA5D292003390D3 /* Constant.swift in Sources */,
 				82C2DF092AA5D292003390D3 /* Extension.swift in Sources */,
 				82C2DF0B2AA5D292003390D3 /* NetworkError.swift in Sources */,
@@ -540,6 +552,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -570,6 +583,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

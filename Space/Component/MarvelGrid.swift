@@ -7,7 +7,8 @@ enum GridMode {
 struct MarvelGrid: View {
     @Environment(\.navigate) private var navigate
 
-    @ObservedObject var model: MarvelGrid.Model
+    @StateObject var model = GridModel()
+    @State var endPoint: Marvel.EndPoint
     let titleShown: Bool
     let tappable: Bool
     let columns: [GridItem] = Array(
@@ -15,8 +16,8 @@ struct MarvelGrid: View {
         count: 3
     )
 
-    init(model: MarvelGrid.Model, titleShown: Bool = true, tappable: Bool = true) {
-        self.model = model
+    init(endPoint: Marvel.EndPoint, titleShown: Bool = true, tappable: Bool = true) {
+        self.endPoint = endPoint
         self.titleShown = titleShown
         self.tappable = tappable
     }
@@ -39,8 +40,9 @@ struct MarvelGrid: View {
             }
         }
         .task {
+            model.updateEndPoint(endPoint)
             do {
-                try await model.fetch(model.offset)
+                try await model.fetch()
             } catch {
                 print(error.localizedDescription)
             }
@@ -50,6 +52,6 @@ struct MarvelGrid: View {
 
 struct CharactersGrid_Previews: PreviewProvider {
     static var previews: some View {
-        MarvelGrid(model: MarvelGrid.Model(endPoint: .characters, Character.mock))
+        MarvelGrid(endPoint: .characters)
     }
 }
