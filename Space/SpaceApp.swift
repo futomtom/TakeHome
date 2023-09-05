@@ -1,5 +1,3 @@
-// SpaceApp.swift
-
 import SwiftUI
 
 @main

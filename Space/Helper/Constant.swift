@@ -1,5 +1,3 @@
-// Constant.swift
-
 import Foundation
 import UIKit
 

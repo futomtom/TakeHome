@@ -7,8 +7,9 @@ enum GridMode {
 struct MarvelGrid: View {
     @Environment(\.navigate) private var navigate
 
-    @StateObject var model = GridModel()
-    @State var endPoint: Marvel.EndPoint
+    @StateObject private var model = GridModel()
+    @State private var endPoint: Marvel.EndPoint
+    @State private var hasFetched = false
     let titleShown: Bool
     let tappable: Bool
     let columns: [GridItem] = Array(
@@ -38,12 +39,20 @@ struct MarvelGrid: View {
                         }
                 }
             }
+            if hasFetched, model.characters.isEmpty {
+                NoDataView()
+            }
         }
         .task {
+            guard !hasFetched else {
+                return
+            }
             model.updateEndPoint(endPoint)
             do {
                 try await model.fetch()
+                hasFetched = true
             } catch {
+                hasFetched = true
                 print(error.localizedDescription)
             }
         }

@@ -26,7 +26,7 @@ final class GridModel: ObservableObject {
         toModel(data: response.data)
     }
 
-    func toModel(data: PaginatedInfo<Character>) {
+    private func toModel(data: PaginatedInfo<Character>) {
         // let newCharacters = data.results?.filter { $0.hasThumbnail } ?? []
         let newCharacters = data.results ?? []
         characters.append(contentsOf: newCharacters)
@@ -49,3 +49,20 @@ final class GridModel: ObservableObject {
         characters.isLast(character) && hasMore && characters.count != total
     }
 }
+
+/*
+ extension GridModel {
+     var dMsg: String {
+         switch endPoint {
+         case .dummy:
+             return "dummy"
+         case .characters:
+             return "characters"
+         case .comics(_):
+             return "comics"
+         case .events(_):
+             return "events"
+         }
+     }
+ }
+ */

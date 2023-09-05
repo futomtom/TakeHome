@@ -5,7 +5,7 @@ struct Detail: View {
     @Environment(\.navigate) private var navigate
 
     let character: Character
-    @State var mode: TabMode = .comics
+    @State private var mode: TabMode = .comics
 
     init(character: Character) {
         self.character = character
@@ -24,6 +24,9 @@ struct Detail: View {
                     endPoint: .events(character.Id), titleShown: false, tappable: false
                 )
             }
+        }
+        .toolbar {
+            Image(systemName: "ellipsis")
         }
     }
 }
