@@ -15,9 +15,9 @@ struct Marvel {
         case .characters:
             return "characters"
         case let .comics(characterId: characterId):
-            return  "characters/\(characterId)/comics"
+            return "characters/\(characterId)/comics"
         case let .events(characterId: characterId):
-            return  "characters/\(characterId)/events"
+            return "characters/\(characterId)/events"
         }
     }
 

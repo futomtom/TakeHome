@@ -3,11 +3,11 @@ import SwiftUI
 struct GridCell: View {
     @Environment(\.colorScheme) var colorScheme
     let character: Character
-    let showTitle: Bool
+    let titleShown: Bool
 
     init(character: Character, titleShown: Bool = true) {
         self.character = character
-        self.showTitle = titleShown
+        self.titleShown = titleShown
     }
 
     var body: some View {
@@ -28,7 +28,7 @@ struct GridCell: View {
                     }
                 }
             }
-            if showTitle {
+            if titleShown {
                 bannerView()
             }
         }
@@ -43,7 +43,7 @@ struct GridCell: View {
                         startPoint: .top,
                         endPoint: .bottom
                     ))
-                .frame(height: Constant.gridWidth)
+
 
             Text(character.safeName)
                 .foregroundColor(.white)
@@ -52,6 +52,7 @@ struct GridCell: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding([.bottom, .leading], 8)
         }
+        .frame(width: Constant.gridWidth, height: Constant.gridWidth)
     }
 }
 

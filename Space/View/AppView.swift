@@ -1,5 +1,9 @@
 import SwiftUI
 
+enum Route: Hashable {
+    case detail(Character)
+}
+
 struct AppView: View {
     var body: some View {
         NavigationStack {

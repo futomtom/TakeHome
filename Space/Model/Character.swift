@@ -1,7 +1,7 @@
 import Foundation
 
-struct Character: Decodable, Identifiable, Equatable {
-    let id: Int?
+struct Character: Decodable, Identifiable, Equatable, Hashable {
+    let id: Int
     let name, description: String?
     let thumbnail: Thumbnail?
     let comics: SubInfo?
@@ -20,8 +20,21 @@ struct Character: Decodable, Identifiable, Equatable {
         !(thumbnail?.path?.hasSuffix("image_not_available") ?? false)
     }
 
+    func getTitle(for tab: TabMode) -> String {
+        if tab == .comics, let comics {
+            return "\(comics.returned)"
+        } else if tab == .events, let events {
+            return "\(events.returned)"
+        }
+        return ""
+    }
+
     static func == (lhs: Character, rhs: Character) -> Bool {
-        lhs.id == rhs.id && lhs.id != nil
+        lhs.id == rhs.id
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id.hashValue)
     }
 }
 
@@ -40,7 +53,7 @@ extension Character {
 
     struct SubInfo: Codable {
         let returned: Int
-        let collectionURI: String?
+        // let collectionURI: String?
     }
 }
 
@@ -63,8 +76,8 @@ extension Character {
                 name: "Captain America",
                 description: description,
                 thumbnail: thumbnail,
-                comics: SubInfo(returned: 12, collectionURI: "http://mock"),
-                events: SubInfo(returned: 22, collectionURI: "http://mock")
+                comics: SubInfo(returned: 12),
+                events: SubInfo(returned: 22)
             )
         }
     }

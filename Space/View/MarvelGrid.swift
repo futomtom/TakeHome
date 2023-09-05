@@ -7,13 +7,16 @@ enum GridMode {
 struct MarvelGrid: View {
     @ObservedObject var model: MarvelGrid.Model
     let titleShown: Bool
+    let tappable: Bool
     let columns: [GridItem] = Array(
         repeating: .init(.flexible(), spacing: Constant.gridSpacing),
         count: 3
     )
-    init(model: MarvelGrid.Model, titleShown: Bool = true) {
+
+    init(model: MarvelGrid.Model, titleShown: Bool = true, tappable: Bool = true) {
         self.model = model
         self.titleShown = titleShown
+        self.tappable = tappable
     }
 
     var body: some View {
@@ -22,9 +25,7 @@ struct MarvelGrid: View {
                 ForEach(model.characters) { character in
                     GridCell(character: character, titleShown: titleShown)
                         .onAppear {
-                            if model.characters.isLast(character) {
-                                model.loadMore(model.offset)
-                            }
+                            model.loadMoreIfCan(character)
                         }
                 }
             }
@@ -33,14 +34,14 @@ struct MarvelGrid: View {
             do {
                 try await model.fetch(model.offset)
             } catch {
-                print("🙂", error.localizedDescription)
+                print(error.localizedDescription)
             }
         }
     }
 }
 
-// struct CharactersGrid_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CharactersGrid(model: CharactersGrid.Model())
-//    }
-// }
+struct CharactersGrid_Previews: PreviewProvider {
+    static var previews: some View {
+        MarvelGrid(model: MarvelGrid.Model(endPoint: .characters, Character.mock))
+    }
+}

@@ -10,7 +10,7 @@ struct MarvelClient: MarvelProtocol {
 
     @discardableResult
     func charactersFetch(endPoint: Marvel.EndPoint, _ offset: Int) async throws -> CharactersResponse {
-        let marvel = Marvel(endPoint: endPoint) 
+        let marvel = Marvel(endPoint: endPoint)
         guard let url = marvel.makeURL(offset) else {
             throw NetworkError.invalidURL
         }
