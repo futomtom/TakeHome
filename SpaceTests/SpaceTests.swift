@@ -1,21 +1,21 @@
 import XCTest
 @testable import Space
 
+final class MockMarvelClient: MarvelProtocol {
+    func fetch(endPoint: Marvel.EndPoint, _ offset: Int) async throws -> MarvelResponse {
+        let data = PaginatedInfo(offset: offset, limit: 20, total: 100, count: 0, results: Character.mock)
+       return  MarvelResponse(code: 0, status: "200", data: data)
+    }
+}
+
 final class SpaceTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
+    override func setUpWithError() throws {}
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
+    override func tearDownWithError() throws {}
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    func testNetworkMock() async throws {
+        let response = try? await MockMarvelClient().fetch(endPoint: .characters, 0)
+        XCTAssertEqual(response!.data.results?.count, 11)
     }
 }

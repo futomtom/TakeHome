@@ -31,10 +31,8 @@ struct MarvelGrid: View {
                         .onAppear {
                             model.loadMoreIfCan(character)
                         }
+                        .disabled(!tappable)
                         .onTapGesture {
-                            guard tappable else {
-                                return
-                            }
                             navigate(.detail(character))
                         }
                 }

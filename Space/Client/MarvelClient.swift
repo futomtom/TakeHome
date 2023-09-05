@@ -1,20 +1,20 @@
 import Foundation
 
-typealias CharactersResponse = Response<PaginatedInfo<Character>>
+typealias MarvelResponse = Response<PaginatedInfo<Character>>
 
 protocol MarvelProtocol {
-    func charactersFetch(endPoint: Marvel.EndPoint, _ offset: Int) async throws -> CharactersResponse
+    func fetch(endPoint: Marvel.EndPoint, _ offset: Int) async throws -> MarvelResponse
 }
 
 struct MarvelClient: MarvelProtocol {
     @discardableResult
-    func charactersFetch(endPoint: Marvel.EndPoint, _ offset: Int) async throws -> CharactersResponse {
+    func fetch(endPoint: Marvel.EndPoint, _ offset: Int) async throws -> MarvelResponse {
         let marvel = Marvel(endPoint: endPoint)
         guard let url = marvel.makeURL(offset) else {
             throw NetworkError.invalidURL
         }
 
-        let result: CharactersResponse = try await MarvelClient.get(from: url)
+        let result: MarvelResponse = try await MarvelClient.get(from: url)
         return result
     }
 }

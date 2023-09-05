@@ -19,7 +19,7 @@ final class GridModel: ObservableObject {
 
     func fetch(_ offset: Int = 0) async throws {
         let marvelClient = MarvelClient()
-        let response = try? await marvelClient.charactersFetch(endPoint: endPoint, offset)
+        let response = try? await marvelClient.fetch(endPoint: endPoint, offset)
         guard let response else {
             return
         }

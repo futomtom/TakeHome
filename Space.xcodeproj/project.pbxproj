@@ -43,13 +43,6 @@
 			remoteGlobalIDString = 823A5D8E2AA28A6000D5DE07;
 			remoteInfo = Space;
 		};
-		823A5DAA2AA28A6200D5DE07 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 823A5D872AA28A6000D5DE07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 823A5D8E2AA28A6000D5DE07;
-			remoteInfo = Space;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -67,7 +60,6 @@
 		823A5D992AA28A6100D5DE07 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		823A5D9F2AA28A6200D5DE07 /* SpaceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpaceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		823A5DA32AA28A6200D5DE07 /* SpaceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceTests.swift; sourceTree = "<group>"; };
-		823A5DA92AA28A6200D5DE07 /* SpaceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpaceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		82C2DEF62AA5D1AA003390D3 /* Configuration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Configuration.plist; sourceTree = "<group>"; };
 		82C2DEF92AA5D1D3003390D3 /* Marvel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Marvel.swift; sourceTree = "<group>"; };
 		82C2DEFA2AA5D1D3003390D3 /* MarvelClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarvelClient.swift; sourceTree = "<group>"; };
@@ -94,13 +86,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		823A5D9C2AA28A6200D5DE07 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		823A5DA62AA28A6200D5DE07 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -146,7 +131,6 @@
 			children = (
 				823A5D8F2AA28A6000D5DE07 /* Space.app */,
 				823A5D9F2AA28A6200D5DE07 /* SpaceTests.xctest */,
-				823A5DA92AA28A6200D5DE07 /* SpaceUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -272,24 +256,6 @@
 			productReference = 823A5D9F2AA28A6200D5DE07 /* SpaceTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		823A5DA82AA28A6200D5DE07 /* SpaceUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 823A5DB92AA28A6200D5DE07 /* Build configuration list for PBXNativeTarget "SpaceUITests" */;
-			buildPhases = (
-				823A5DA52AA28A6200D5DE07 /* Sources */,
-				823A5DA62AA28A6200D5DE07 /* Frameworks */,
-				823A5DA72AA28A6200D5DE07 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				823A5DAB2AA28A6200D5DE07 /* PBXTargetDependency */,
-			);
-			name = SpaceUITests;
-			productName = SpaceUITests;
-			productReference = 823A5DA92AA28A6200D5DE07 /* SpaceUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -304,10 +270,6 @@
 						CreatedOnToolsVersion = 14.3;
 					};
 					823A5D9E2AA28A6200D5DE07 = {
-						CreatedOnToolsVersion = 14.3;
-						TestTargetID = 823A5D8E2AA28A6000D5DE07;
-					};
-					823A5DA82AA28A6200D5DE07 = {
 						CreatedOnToolsVersion = 14.3;
 						TestTargetID = 823A5D8E2AA28A6000D5DE07;
 					};
@@ -328,7 +290,6 @@
 			targets = (
 				823A5D8E2AA28A6000D5DE07 /* Space */,
 				823A5D9E2AA28A6200D5DE07 /* SpaceTests */,
-				823A5DA82AA28A6200D5DE07 /* SpaceUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -345,13 +306,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		823A5D9D2AA28A6200D5DE07 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		823A5DA72AA28A6200D5DE07 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -398,13 +352,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		823A5DA52AA28A6200D5DE07 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -412,11 +359,6 @@
 			isa = PBXTargetDependency;
 			target = 823A5D8E2AA28A6000D5DE07 /* Space */;
 			targetProxy = 823A5DA02AA28A6200D5DE07 /* PBXContainerItemProxy */;
-		};
-		823A5DAB2AA28A6200D5DE07 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 823A5D8E2AA28A6000D5DE07 /* Space */;
-			targetProxy = 823A5DAA2AA28A6200D5DE07 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -635,42 +577,6 @@
 			};
 			name = Release;
 		};
-		823A5DBA2AA28A6200D5DE07 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5GRYUYH345;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tca.temp.SpaceUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Space;
-			};
-			name = Debug;
-		};
-		823A5DBB2AA28A6200D5DE07 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5GRYUYH345;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tca.temp.SpaceUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Space;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -697,15 +603,6 @@
 			buildConfigurations = (
 				823A5DB72AA28A6200D5DE07 /* Debug */,
 				823A5DB82AA28A6200D5DE07 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		823A5DB92AA28A6200D5DE07 /* Build configuration list for PBXNativeTarget "SpaceUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				823A5DBA2AA28A6200D5DE07 /* Debug */,
-				823A5DBB2AA28A6200D5DE07 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
