@@ -44,7 +44,6 @@ struct GridCell: View {
                         endPoint: .bottom
                     ))
 
-
             Text(character.safeName)
                 .foregroundColor(.white)
                 .font(.footnote)

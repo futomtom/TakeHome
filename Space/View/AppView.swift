@@ -1,14 +1,22 @@
 import SwiftUI
 
-enum Route: Hashable {
-    case detail(Character)
-}
-
 struct AppView: View {
+    @State private var routes: [Route] = []
+
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $routes) {
             MarvelGrid(
-                model: MarvelGrid.Model(endPoint: .characters))
+                model: MarvelGrid.Model(endPoint: .characters)
+            )
+            .environment(\.navigate) { route in
+                routes.append(route)
+            }
+            .navigationDestination(for: Route.self) { route in
+                switch route {
+                case let .detail(character):
+                    Detail(character: character)
+                }
+            }
         }
     }
 }

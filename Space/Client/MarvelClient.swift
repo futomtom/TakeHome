@@ -7,7 +7,6 @@ protocol MarvelProtocol {
 }
 
 struct MarvelClient: MarvelProtocol {
-
     @discardableResult
     func charactersFetch(endPoint: Marvel.EndPoint, _ offset: Int) async throws -> CharactersResponse {
         let marvel = Marvel(endPoint: endPoint)
@@ -24,6 +23,7 @@ extension MarvelClient {
     static func get<T: Decodable>(from url: URL) async throws -> T {
         do {
             let (data, response) = try await URLSession.shared.data(from: url)
+
             guard let httpResponse = response as? HTTPURLResponse,
                   httpResponse.statusCode == 200 else {
                 throw NetworkError.invalidServerResponse
@@ -31,12 +31,9 @@ extension MarvelClient {
 
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
-            do {
-                let result: T = try decoder.decode(T.self, from: data)
-                return result
-            } catch {
-                throw error
-            }
+
+            let result: T = try decoder.decode(T.self, from: data)
+            return result
         } catch {
             throw error
         }

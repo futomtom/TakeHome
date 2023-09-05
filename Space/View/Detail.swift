@@ -1,12 +1,13 @@
 import SwiftUI
 
 @MainActor
-struct CharacterDetail: View {
+struct Detail: View {
+    @Environment(\.navigate) private var navigate
+
     let character: Character
     @State var mode: TabMode = .comics
     private var comics: MarvelGrid.Model
     private var events: MarvelGrid.Model
-
 
     init(character: Character) {
         self.character = character
@@ -19,7 +20,11 @@ struct CharacterDetail: View {
         VStack {
             headerPanel(character)
             Tab(mode: $mode, character: character)
-            MarvelGrid(model: mode.isComics ? comics: events)
+            MarvelGrid(
+                model: mode.isComics ? comics : events,
+                titleShown: false,
+                tappable: false
+            )
         }
         .task {
             try? await comics.fetch()
@@ -77,6 +82,6 @@ struct CharacterDetail: View {
 
 struct CharacterDetail_Previews: PreviewProvider {
     static var previews: some View {
-        CharacterDetail(character: Character.mock.first!)
+        Detail(character: Character.mock.first!)
     }
 }

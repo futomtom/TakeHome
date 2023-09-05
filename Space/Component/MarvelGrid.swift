@@ -5,6 +5,8 @@ enum GridMode {
 }
 
 struct MarvelGrid: View {
+    @Environment(\.navigate) private var navigate
+
     @ObservedObject var model: MarvelGrid.Model
     let titleShown: Bool
     let tappable: Bool
@@ -26,6 +28,12 @@ struct MarvelGrid: View {
                     GridCell(character: character, titleShown: titleShown)
                         .onAppear {
                             model.loadMoreIfCan(character)
+                        }
+                        .onTapGesture {
+                            guard tappable else {
+                                return
+                            }
+                            navigate(.detail(character))
                         }
                 }
             }

@@ -6,7 +6,6 @@ struct CacheAsyncImage<Content>: View where Content: View {
 
     init(
         url: URL,
-        scale: CGFloat = 1.0,
         @ViewBuilder content: @escaping (AsyncImagePhase) -> Content
     ) {
         self.url = url
@@ -18,7 +17,6 @@ struct CacheAsyncImage<Content>: View where Content: View {
             // let _ = print("cached \(url.absoluteString)")
             content(.success(cached))
         } else {
-            // let _ = print("request \(url.absoluteString)")
             AsyncImage(url: url) { phase in
                 cacheAndRender(phase: phase)
             }
