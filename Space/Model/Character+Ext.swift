@@ -41,7 +41,7 @@ extension Character {
 
         return numbers.map { index in
             Character(
-                id: index,
+                id: index + 1_017_574,
                 name: "Captain America",
                 description: description,
                 thumbnail: thumbnail,

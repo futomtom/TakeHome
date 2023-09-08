@@ -30,7 +30,11 @@ struct AppView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         AppView(routes: [])
-        // State driven navigation to detail
+    }
+}
+
+struct DeepLink_Previews: PreviewProvider {
+    static var previews: some View {
         AppView(routes: [Route.detail(Character.mock.first!)])
     }
 }
