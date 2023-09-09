@@ -17,7 +17,7 @@ struct CachedAsyncImage<Content>: View where Content: View {
             // let _ = print("cached \(url.absoluteString)")
             content(.success(cached))
         } else {
-            AsyncImage(url: url) { phase in
+            AsyncImage(url: url, transaction: .init(animation: .easeInOut)) { phase in
                 cacheAndRender(phase: phase)
             }
         }

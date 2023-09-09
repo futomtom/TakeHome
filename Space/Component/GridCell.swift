@@ -18,7 +18,7 @@ struct GridCell: View {
                     image
                         .resizable()
                         .aspectRatio(contentMode: .fill)
-                        .frame(width: Constant.gridWidth, height: Constant.gridWidth)
+                        .transition(.opacity)
                         .clipped()
                 default:
                     ZStack {
@@ -26,8 +26,10 @@ struct GridCell: View {
                             .fill(colorScheme == .dark ? .black : .white)
                         ProgressView()
                     }
+
                 }
             }
+            .frame(width: Constant.gridWidth, height: Constant.gridWidth)
             if titleShown {
                 bannerView()
             }
