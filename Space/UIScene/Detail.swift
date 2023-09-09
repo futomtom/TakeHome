@@ -12,17 +12,19 @@ struct Detail: View {
     }
 
     var body: some View {
-        VStack {
-            Panel(content: Header(character: character))
-            Tab(mode: $mode, character: character)
-            if mode.isComics {
-                MarvelGrid(
-                    endPoint: .comics(character.Id), titleShown: false, tappable: false
-                )
-            } else {
-                MarvelGrid(
-                    endPoint: .events(character.Id), titleShown: false, tappable: false
-                )
+        ScrollView(.vertical) {
+            VStack {
+                Panel(content: Header(character: character))
+                Tab(mode: $mode, character: character)
+                if mode.isComics {
+                    MarvelGrid(
+                        endPoint: .comics(character.Id), titleShown: false, tappable: false
+                    )
+                } else {
+                    MarvelGrid(
+                        endPoint: .events(character.Id), titleShown: false, tappable: false
+                    )
+                }
             }
         }
         .toolbar {
