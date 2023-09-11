@@ -2,14 +2,17 @@ import Foundation
 
 @MainActor
 final class GridModel: ObservableObject {
-    @Published private(set) var characters: [Character]
 
+    @Published private(set) var characters: [Character]
+    var charId: String = ""
+    var total = 0
+    
     private var offset = 0
     private var hasMore: Bool = true
-    private var total = 0
-    private var endPoint: Marvel.EndPoint = .dummy
+    private var endPoint: Marvel.EndPoint
 
-    init(_ characters: [Character] = []) {
+    init(_ endPoint: Marvel.EndPoint, characters: [Character] = []) {
+        self.endPoint = endPoint
         self.characters = characters
     }
 
@@ -18,7 +21,9 @@ final class GridModel: ObservableObject {
     }
 
     func fetch(_ offset: Int = 0, client: MarvelProtocol = MarvelClient()) async throws {
-        let response = try? await client.fetch(endPoint: endPoint, offset)
+        let marvelClient = MarvelClient()
+        let response = try? await marvelClient.fetch(endPoint: endPoint, offset, charId: charId)
+
         guard let response else {
             return
         }

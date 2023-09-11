@@ -7,8 +7,8 @@ enum GridMode {
 struct MarvelGrid: View {
     @Environment(\.navigate) private var navigate
 
-    @StateObject private var model = GridModel()
-    @State private var endPoint: Marvel.EndPoint
+    @ObservedObject var model: GridModel
+
     @State private var hasFetched = false
     let titleShown: Bool
     let tappable: Bool
@@ -17,10 +17,11 @@ struct MarvelGrid: View {
         count: 3
     )
 
-    init(endPoint: Marvel.EndPoint, titleShown: Bool = true, tappable: Bool = true) {
-        self.endPoint = endPoint
+    init(model: GridModel, titleShown: Bool = true, tappable: Bool = true) {
+        self.model = model
         self.titleShown = titleShown
         self.tappable = tappable
+        self.hasFetched = !tappable
     }
 
     var body: some View {
@@ -28,6 +29,7 @@ struct MarvelGrid: View {
             LazyVGrid(columns: columns, spacing: Constant.gridSpacing) {
                 ForEach(model.characters) { character in
                     GridCell(character: character, titleShown: titleShown)
+                        .clipped()
                         .onAppear {
                             model.loadMoreIfCan(character)
                         }
@@ -45,7 +47,7 @@ struct MarvelGrid: View {
             guard !hasFetched else {
                 return
             }
-            model.updateEndPoint(endPoint)
+         
             do {
                 try await model.fetch()
                 hasFetched = true
@@ -59,6 +61,6 @@ struct MarvelGrid: View {
 
 struct CharactersGrid_Previews: PreviewProvider {
     static var previews: some View {
-        MarvelGrid(endPoint: .characters)
+        MarvelGrid(model: GridModel(.characters, characters: Character.mock))
     }
 }

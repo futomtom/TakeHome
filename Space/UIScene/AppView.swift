@@ -9,7 +9,7 @@ struct AppView: View {
 
     var body: some View {
         NavigationStack(path: $routes) {
-            MarvelGrid(endPoint: .characters)
+            MarvelGrid(model: GridModel(.characters))
                 .toolbar(content: {
                     Text(" ")
                 })
@@ -35,6 +35,6 @@ struct ContentView_Previews: PreviewProvider {
 
 struct DeepLink_Previews: PreviewProvider {
     static var previews: some View {
-        AppView(routes: [Route.detail(Character.mock.first!)])
+        AppView(routes: [Route.detail(Character.mock.first!), Route.detail(Character.mock.first!)])
     }
 }

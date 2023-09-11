@@ -11,7 +11,8 @@ enum TabMode: CaseIterable {
 
 struct Tab: View {
     @Binding var mode: TabMode
-    let character: Character
+    let comicsCount: Int?
+    let eventsCount: Int?
 
     @Namespace private var animation
 
@@ -20,7 +21,7 @@ struct Tab: View {
             ForEach(TabMode.allCases, id: \.self) { tab in
                 VStack {
                     tabIcon(tab: tab, mode: mode)
-                    Text(character.getTitle(for: tab))
+                    Text(getTitle(for: tab))
                         .font(.system(size: 12, weight: .bold))
                         .padding(.top, 5)
                 }
@@ -35,9 +36,18 @@ struct Tab: View {
                 }
                 .foregroundColor(mode == tab ? .primary : .secondary)
                 .onTapGesture {
-                    mode = tab
+                    withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.7, blendDuration: 0.7)) {
+                        mode = tab
+                    }
                 }
             }
+        }
+    }
+    private func getTitle(for tab: TabMode) -> String {
+        if let count = tab.isComics ? comicsCount : eventsCount {
+            return "\(count)"
+        } else {
+            return ""
         }
     }
 
@@ -54,6 +64,6 @@ struct Tab: View {
 
 struct Tab_Previews: PreviewProvider {
     static var previews: some View {
-        Tab(mode: .constant(.comics), character: Character.mock.first!)
+        Tab(mode: .constant(.comics), comicsCount: 10, eventsCount: 10)
     }
 }

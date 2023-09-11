@@ -2,34 +2,31 @@ import Foundation
 
 struct Marvel {
     private let credential: Marvel.Credentials = Marvel.getCredentials()
-    var endPoint: EndPoint = .dummy
+    var endPoint: EndPoint
 
     enum EndPoint {
-        case dummy
         case characters
-        case comics(String)
-        case events(String)
+        case comics
+        case events
     }
 
-    var path: String {
+    func getPath(with characterId: String) -> String {
         switch endPoint {
         case .characters:
             return "characters"
-        case let .comics(characterId: characterId):
+        case .comics:
             return "characters/\(characterId)/comics"
-        case let .events(characterId: characterId):
+        case .events:
             return "characters/\(characterId)/events"
-        case .dummy:
-            return ""
         }
     }
 
-    func makeURL(_ offset: Int = 0) -> URL? {
+    func makeURL(_ offset: Int = 0, charId: String = "") -> URL? {
         let base = "https://gateway.marvel.com/v1/public/"
 
         let timeStamp = "1" // \(Date().timeIntervalSince1970)"
         let hash: String = (timeStamp + credential.privateKey + credential.publicKey).md5
-        let urlString = base + path
+        let urlString = base + getPath(with: charId)
         /// Add default query params
         let queryParamsList: [URLQueryItem] = [
             URLQueryItem(name: "apikey", value: credential.publicKey),

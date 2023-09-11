@@ -3,14 +3,14 @@ import Foundation
 typealias MarvelResponse = Response<PaginatedInfo<Character>>
 
 protocol MarvelProtocol {
-    func fetch(endPoint: Marvel.EndPoint, _ offset: Int) async throws -> MarvelResponse
+    func fetch(endPoint: Marvel.EndPoint, _ offset: Int, charId: String) async throws -> MarvelResponse
 }
 
 struct MarvelClient: MarvelProtocol {
     @discardableResult
-    func fetch(endPoint: Marvel.EndPoint, _ offset: Int) async throws -> MarvelResponse {
+    func fetch(endPoint: Marvel.EndPoint, _ offset: Int, charId: String) async throws -> MarvelResponse {
         let marvel = Marvel(endPoint: endPoint)
-        guard let url = marvel.makeURL(offset) else {
+        guard let url = marvel.makeURL(offset, charId: charId) else {
             throw NetworkError.invalidURL
         }
 
