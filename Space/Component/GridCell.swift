@@ -1,3 +1,4 @@
+import NukeUI
 import SwiftUI
 
 struct GridCell: View {
@@ -12,24 +13,23 @@ struct GridCell: View {
 
     var body: some View {
         ZStack {
-            CachedAsyncImage(url: character.imageURL) { phase in
-                switch phase {
-                case let .success(image):
+            LazyImage(url: character.imageURL) { state in
+                if let image = state.image {
                     image
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .transition(.opacity)
                         .clipped()
-                default:
+                } else {
                     ZStack {
                         Rectangle()
                             .fill(colorScheme == .dark ? .black : .white)
                         ProgressView()
                     }
-
                 }
             }
             .frame(width: Constant.gridWidth, height: Constant.gridWidth)
+
             if titleShown {
                 bannerView()
             }

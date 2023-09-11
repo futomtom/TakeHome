@@ -4,7 +4,7 @@ struct Character: Decodable, Identifiable, Equatable, Hashable {
     let id: Int
     let name, description: String?
     let thumbnail: Thumbnail?
- 
+
     var Id: String {
         "\(id)"
     }

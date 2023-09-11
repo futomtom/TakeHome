@@ -21,17 +21,18 @@ struct MarvelGrid: View {
         self.model = model
         self.titleShown = titleShown
         self.tappable = tappable
-        self.hasFetched = !tappable
+        hasFetched = !tappable
     }
 
     var body: some View {
         ScrollView(.vertical) {
             LazyVGrid(columns: columns, spacing: Constant.gridSpacing) {
-                ForEach(model.characters) { character in
+                ForEach(Array(model.characters.enumerated()), id:\.element.id) { index, character in
                     GridCell(character: character, titleShown: titleShown)
                         .clipped()
                         .onAppear {
-                            model.loadMoreIfCan(character)
+                            print("🙂appear", index) 
+                            model.loadMoreIfCan(index, character)
                         }
                         .disabled(!tappable)
                         .onTapGesture {
@@ -39,21 +40,9 @@ struct MarvelGrid: View {
                         }
                 }
             }
+            Spacer(minLength: 40)
             if hasFetched, model.characters.isEmpty {
                 NoDataView()
-            }
-        }
-        .task {
-            guard !hasFetched else {
-                return
-            }
-         
-            do {
-                try await model.fetch()
-                hasFetched = true
-            } catch {
-                hasFetched = true
-                print(error.localizedDescription)
             }
         }
     }

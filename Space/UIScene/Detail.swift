@@ -7,7 +7,7 @@ struct Detail: View {
     @StateObject var events = GridModel(.events)
     @State var comicCount: Int?
     @State var eventCount: Int?
-    
+
     let character: Character
     @State private var mode: TabMode = .comics
 
@@ -16,29 +16,27 @@ struct Detail: View {
     }
 
     var body: some View {
-
         ScrollView(.vertical) {
             VStack {
                 Panel(content: Header(character: character))
                 Tab(mode: $mode, comicsCount: comicCount, eventsCount: eventCount)
-                if mode.isComics {
-                    MarvelGrid(model: comics, titleShown: false, tappable: false)
-                } else {
-                    MarvelGrid(model: events, titleShown: false, tappable: false)
-                }
+
+                MarvelGrid(model: mode.isComics ? comics : events, titleShown: false, tappable: false)
+                    .frame(height: UIScreen.main.bounds.size.height)
             }
         }
+
         .task {
             comics.charId = character.Id
             events.charId = character.Id
-            async let comic = comics.fetch()
-            async let event = events.fetch()
-            do {
-                try await (comic, event)
+            await withTaskGroup(of: Void.self) { group in
+                group.addTask { try? await comics.fetch() }
+                group.addTask { try? await events.fetch() }
+
+                // Wait for both tasks a and b to complete
+                while let _ = await group.next() {}
                 comicCount = comics.total
                 eventCount = events.total
-            } catch {
-                print("load fail")
             }
         }
         .toolbar {

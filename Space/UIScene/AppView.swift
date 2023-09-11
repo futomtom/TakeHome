@@ -2,6 +2,7 @@ import SwiftUI
 
 struct AppView: View {
     @State private var routes: [Route]
+    @StateObject var model = GridModel(.characters)
 
     init(routes: [Route] = []) {
         self.routes = routes
@@ -9,7 +10,7 @@ struct AppView: View {
 
     var body: some View {
         NavigationStack(path: $routes) {
-            MarvelGrid(model: GridModel(.characters))
+            MarvelGrid(model: model)
                 .toolbar(content: {
                     Text(" ")
                 })
@@ -23,6 +24,9 @@ struct AppView: View {
                         Detail(character: character)
                     }
                 }
+        }
+        .task {
+            try? await model.fetch()
         }
     }
 }
